@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 마이바티스용 문서 타입이다 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chan.aws0822.persistance.MemberMapper">
+
+<insert id="memberInsert" parameterType = "mv">
+ insert into member(memberid,memberpassword,membername,membergender,memberbirthday,memberphone,memberemail,ridx)
+ values(#{memberid},#{memberpassword},#{membername},#{membergender},#{memberbirthday},#{memberphone},#{memberemail},#{ridx})
+</insert>
+
+
+<select id = "memberIdCheck" parameterType = "String" resultType = "int">
+SELECT count(*) as cnt FROM member WHERE memberid = #{memberId}
+</select>
+
+
+<select id="memberLoginCheck" parameterType="String" resultType="mv">
+select * from member where memberid = #{memberid}
+</select>
+
+<select id="memberSelectAll" resultType = "mv">
+SELECT *FROM member  WHERE delyn = 'N' ORDER BY midx DESC
+</select>
+
+
+</mapper>
