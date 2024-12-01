@@ -92,9 +92,25 @@ document.getElementById('loginButton').addEventListener('click', function() {
       document.querySelector('#loginModal .modal-body').innerHTML = data;
       var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
       loginModal.show();
-    });
+    
+const scripts = document.querySelectorAll('script');
+scripts.forEach(script => {
+    const newScript = document.createElement('script');
+    if (script.src) {
+        newScript.src = script.src;
+    } else {
+        newScript.textContent = script.textContent;
+    }
+    document.body.appendChild(newScript);
+    document.body.removeChild(newScript); // 실행 후 제거
 });
+})
+.catch(error => console.error(error));
+});
+
+
 </script>
+
 
 </body>
 </html>
